@@ -2,6 +2,8 @@ package lemon.servlet;
 
 import lemon.dao.BorrowRecordDAO;
 import lemon.model.BorrowRecord;
+import lemon.model.Page;
+import lemon.util.Util;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +21,9 @@ import java.util.List;
 public class BorrowRecordQueryServlet extends AbstractBaseServlet{
     @Override
     public Object process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        List<BorrowRecord> records = BorrowRecordDAO.query();
+        Page p = Util.parse(req);
+
+        List<BorrowRecord> records = BorrowRecordDAO.query(p);
         return records;
     }
 }

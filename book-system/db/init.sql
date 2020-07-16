@@ -83,14 +83,14 @@ create table borrow_record(
 -- mysql中没有==，是用=号代替==。为了区分=和==，赋值时使用:=
 set @username:='abc';
 set @password:='123';
-set @nickname:='风一样的男子😱';
+set @nickname:='柠萌呀';
 set @email:='123@qq.com';
 
 set @dictionary_classes_graduate_year='000001';
 set @dictionary_classes_major='000002';
 
-set @classes_name:='幼儿园😂';
-set @student_name:='小小的梦想🐷';
+set @classes_name:='大学';
+set @student_name:='柠萌';
 
 insert into user(username, nickname, password, email) values (@username, @nickname, @password, @email);
 insert into user(username, nickname, password, email) values (concat(@username, '1'), concat(@nickname, '1'), @password, @email);
@@ -113,9 +113,9 @@ insert into dictionary_tag(dictionary_tag_key, dictionary_tag_value, dictionary_
 insert into dictionary_tag(dictionary_tag_key, dictionary_tag_value, dictionary_id)values ('002', '英语系', 2);
 insert into dictionary_tag(dictionary_tag_key, dictionary_tag_value, dictionary_id)values ('003', '计算机科学与技术', 2);
 
-insert into classes(classes_name, classes_graduate_year, classes_major, classes_desc) values (concat(@classes_name, '大班'), '000001001', '000002003', '已经4岁，即将成为大人的大班同学，不再是3岁小孩子了呀');
-insert into classes(classes_name, classes_graduate_year, classes_major, classes_desc) values (concat(@classes_name, '中班'), '000001002', '000002003', '虽然还是3岁的小孩子，但也开始思考人生了呢');
-insert into classes(classes_name, classes_graduate_year, classes_major, classes_desc) values (concat(@classes_name, '小班'), '000001003', '000002003', '挂着鼻涕的跟屁虫');
+insert into classes(classes_name, classes_graduate_year, classes_major, classes_desc) values (concat(@classes_name, '三年级'), '000001001', '000002003', '为自己的未来不断努力，不断充实自己');
+insert into classes(classes_name, classes_graduate_year, classes_major, classes_desc) values (concat(@classes_name, '二年级'), '000001002', '000002003', '开始明确自己的未来，为自己制定目标');
+insert into classes(classes_name, classes_graduate_year, classes_major, classes_desc) values (concat(@classes_name, '一年级'), '000001003', '000002003', '刚步入大学学生，对大学生活充满好奇');
 
 insert into student(student_name, student_no, id_card, student_email, classes_id) values (concat(@student_name, 'A1'), 's00001', '222222222222222222', @email, 1);
 insert into student(student_name, student_no, id_card, student_email, classes_id) values (concat(@student_name, 'A2'), 's00002', '222222222222222223', @email, 1);
@@ -128,10 +128,10 @@ insert into student(student_name, student_no, id_card, student_email, classes_id
 insert into student(student_name, student_no, id_card, student_email, classes_id) values (concat(@student_name, 'B4'), 's00009', '222222222222222230', @email, 2);
 insert into student(student_name, student_no, id_card, student_email, classes_id) values (concat(@student_name, 'B5'), 's00010', '222222222222222231', @email, 2);
 
-insert into book(book_name, author, price, create_time) values ('高等数学', '马拉司机', 115.2, now());
-insert into book(book_name, author, price, create_time) values ('诗和远方', '老湿', 61.5, now());
-insert into book(book_name, author, price, create_time) values ('柴米油盐', '家庭妇男', 33, now());
-insert into book(book_name, author, price, create_time) values ('▄︻┻┳═一∵∴∷∶∵(∵_,∵)>>>>散弹发射！！', '蚷神', 33, now());
+insert into book(book_name, author, price, create_time) values ('高等数学', '小米', 115.2, now());
+insert into book(book_name, author, price, create_time) values ('诗和远方', '小明', 61.5, now());
+insert into book(book_name, author, price, create_time) values ('美术', '小画', 33, now());
+insert into book(book_name, author, price, create_time) values ('四级单词', '小梦', 33, now());
 
 insert into borrow_record(book_id, student_id, start_time, end_time, create_time) values (1, 1, '2020-01-01 14:20:00', '2020-02-01 14:20:00', now());
 insert into borrow_record(book_id, student_id, start_time, end_time, create_time) values (1, 2, '2020-03-01 14:20:00', '2020-03-22 14:20:00', now());

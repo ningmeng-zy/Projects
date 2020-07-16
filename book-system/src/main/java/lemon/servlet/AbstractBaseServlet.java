@@ -2,6 +2,7 @@ package lemon.servlet;
 
 import lemon.exception.BaseException;
 import lemon.model.ResponseResult;
+import lemon.util.CountHolder;
 import lemon.util.JSONUtil;
 
 import javax.servlet.ServletException;
@@ -41,6 +42,7 @@ public abstract class AbstractBaseServlet extends HttpServlet {
             r.setSuccess(true);
             r.setCode("200");
             r.setMessage("操作成功");
+            r.setTotal(CountHolder.get());//可能是分页的接口，get可以获取到值，也可能不是，返回null。
             r.setData(data);
         } catch (Exception e) {//process抛异常处理逻辑
             e.printStackTrace();
@@ -57,6 +59,8 @@ public abstract class AbstractBaseServlet extends HttpServlet {
             PrintWriter pw = new PrintWriter(sw);
             e.printStackTrace(pw);
             r.setStackTrace(sw.toString());
+        }finally {
+            CountHolder.remove();
         }
         PrintWriter pw = resp.getWriter();
         pw.println(JSONUtil.write(r));
